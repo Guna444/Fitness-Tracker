@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Fitness Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Century Gothic, sans-serif;
+        }
+
+        header {
+            background: url('fitnessbg.jpg') no-repeat center center/cover;
+            height: 100vh;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Add semi-transparent overlay */
+            backdrop-filter: blur(3px); /* Light blur effect */
+        }
+
+        .main {
+            position: relative;
+            z-index: 2;
+        }
+
+        ul {
+            float: right;
+            list-style-type: none;
+            margin-top: 20px;
+        }
+
+        ul li {
+            display: inline-block;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #000; /* Black text color for inactive links */
+            padding: 5px 20px;
+            border: 1px solid transparent;
+            font-size: 16px;
+            font-weight: bold; /* Make options bold */
+            transition: 0.6s ease;
+        }
+
+        ul li a:hover {
+            background-color: #000; /* Black background on hover */
+            color: #fff; /* White text on hover */
+            border-radius: 4px;
+        }
+
+        ul li.active a {
+            background-color: transparent; /* Transparent when not hovered */
+            color: #000; /* Black text color for inactive links */
+        }
+
+        ul li.active a:hover {
+            background-color: #000; /* Black background on hover */
+            color: #fff; /* White text on hover */
+        }
+
+        .logo {
+            float: left;
+            padding-left: 20px;
+            padding-top: 10px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .title {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .title h1 {
+            color: #fff;
+            font-size: 60px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add text shadow for better visibility */
+        }
+
+        .button {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .btn {
+            border: 1px solid #fff;
+            padding: 10px 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.6s ease;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        footer .follow-us {
+            width: 30%;
+            text-align: left;
+        }
+
+        footer h3 {
+            color: #fff;
+            border-bottom: 2px solid #00695c;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #00695c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #004d40;
+        }
+
+        footer .address {
+            text-align: center;
+            width: 40%;
+        }
+
+        footer .contact {
+            text-align: right;
+            width: 30%;
+        }
+
+        footer .social-icons img {
+            width: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        footer .social-icons a {
+            color: #00695c;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        footer .social-icons a:hover {
+            color: #004d40;
+        }
+
+        /* Set Goals Section */
+        .set-goals {
+            background: #f9f9f9;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .set-goals h2 {
+            font-size: 28px;
+            text-align: center;
+            color: #00695c;
+            margin-bottom: 20px;
+        }
+
+        .set-goals p {
+            font-size: 16px;
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .goals-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .goal-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1;
+            max-width: 30%;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .goal-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .goal-card h3 {
+            font-size: 20px;
+            color: #004d40;
+            margin-bottom: 10px;
+        }
+
+        .goal-card p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .goal-card a {
+            text-decoration: none;
+            color: #fff;
+            background: #00695c;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .goal-card a:hover {
+            background: #004d40;
+        }
+
+        .goal-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="main">
+            <div class="logo">
+                <img src="logo.jpg" alt="Fitness Tracker Logo">
+            </div>
+            <ul>
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="#set-goals">Set Goals</a></li>
+                <li><a href="progress.html">Progress</a></li>
+            </ul>
+        </div>
+        <div class="title">
+            <h1>Track Your Fitness Journey</h1>
+        </div>
+        <div class="button">
+            <a href="membership.html" class="btn">Get Started</a>
+            <a href="progress.html" class="btn">View Progress</a>
+        </div>
+        
+    </header>
+</body>
+</html>
+
+    <!-- Set Goals Section -->
+    <section id="set-goals" class="set-goals">
+        <h2>Set Your Fitness Goals</h2>
+        <p>Define, track, and achieve your fitness milestones with ease!</p>
+        <div class="goals-container">
+            <div class="goal-card">
+                <img src="i1.webp" alt="Build Muscle">
+                <h3>Build Muscle</h3>
+                <p>Focus on strength and muscle-building exercises to achieve your goals.</p>
+                <a href="#">Explore Workouts</a>
+            </div>
+            <div class="goal-card">
+                <img src="i2.png" alt="Lose Weight">
+                <h3>Lose Weight</h3>
+                <p>Combine cardio and diet plans to achieve your weight-loss targets.</p>
+                <a href="#">Get Started</a>
+            </div>
+            <div class="goal-card">
+                <img src="i3.webp" alt="Stay Fit">
+                <h3>Stay Fit</h3>
+                <p>Maintain a healthy routine with balanced workouts and mindfulness.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="follow-us">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/punith_05_26?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram">
+                    Instagram
+                </a><br>
+                <a href="https://x.com/sampurnesh_babu">
+                    <img src="x logo.avif" alt="X">
+                    X
+                </a><br>
+                <a href="https://youtu.be/dAuHgdrPy2c?si=nkYm8RHatkwoTwC6">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+                    YouTube
+                </a>
+            </div>
+        </div>
+        <div class="address">
+            <h3>Address</h3>
+            <p>
+                Unimall, Lovely Professional University<br>
+                Block-15A, Room Number 415, 4th Floor<br>
+                Jalandhar, Punjab 144411
+            </p>
+        </div>
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:polurpunith@gmail.com">polurpunith@gmail.com</a></p>
+            <p>Phone: <a href="tel:+91-95022-88989">+91-95022-88989</a></p>
+        </div>
+    </footer>
+</body>
+</html>

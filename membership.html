@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Membership Options - Fitness Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        /* Video background */
+        video.background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; /* Ensure the video stays behind everything */
+        }
+
+        /* Optional: Remove or make the video overlay less dark */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1); /* Lighter overlay for a clearer video */
+            z-index: -1; /* Overlay stays below content */
+        }
+
+        .membership-container {
+            background: rgba(255, 255, 255, 0.2); /* Set very low opacity for the background */
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 1200px;
+            margin: 50px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1; /* Ensure the content stays above the video */
+        }
+
+        h1 {
+            text-align: center;
+            color: #FF6347; /* Set a bright color for contrast (e.g., Tomato Red) */
+            margin-bottom: 20px;
+            font-size: 48px; /* Increase font size */
+            font-weight: bold; /* Make the text bold */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Add text shadow for better contrast */
+        }
+
+        .membership-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .membership-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            max-width: 30%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .membership-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .membership-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .membership-card h3 {
+            color: #004d40;
+            margin-bottom: 10px;
+        }
+
+        .membership-card p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .membership-card a {
+            text-decoration: none;
+            background: #00695c;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .membership-card a:hover {
+            background: #004d40;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f1f1f1;
+        }
+
+        footer a {
+            color: #00695c;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video class="background-video" autoplay muted loop>
+        <source src="v4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Video Overlay with reduced opacity -->
+    <div class="video-overlay"></div>
+
+    <div class="membership-container">
+        <h1>Membership Plans & Options</h1>
+        <div class="membership-grid">
+            <div class="membership-card">
+                <img src="q1.jpeg" alt="Basic Membership">
+                <h3>Basic Plan</h3>
+                <p>Access to gym equipment and basic fitness tracking features.</p>
+                <a href="#">Subscribe Now</a>
+            </div>
+            <div class="membership-card">
+                <img src="q2.jpeg" alt="Premium Membership">
+                <h3>Premium Plan</h3>
+                <p>Includes personal trainer support and advanced tracking tools.</p>
+                <a href="#">Subscribe Now</a>
+            </div>
+            <div class="membership-card">
+                <img src="q3.jpeg" alt="Equipment Rentals">
+                <h3>Equipment Rentals</h3>
+                <p>Rent fitness equipment for your home workout sessions.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="membership-card">
+                <img src="q4.jpeg" alt="Diet Consultation">
+                <h3>Diet Consultation</h3>
+                <p>Custom diet plans to complement your fitness goals.</p>
+                <a href="#">Book a Session</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Fitness Tracker | <a href="index.html">Back to Home</a></p>
+    </footer>
+</body>
+</html>
